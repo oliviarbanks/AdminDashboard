@@ -1,8 +1,8 @@
-import './App.css';
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
+import "./Form.scss";
 
-function App() {
+const AddAmbassador = () => {
   const [name, setName] = useState("");
   const [date, setDate] = useState(""); // Initialize as an empty string
   const [amount, setAmount] = useState(0);
@@ -31,7 +31,8 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div>
+      <div>Dashboard</div>
       <div className="information">
         <label>Name:</label>
         <input type="text" onChange={(event) => setName(event.target.value)} />
@@ -41,12 +42,10 @@ function App() {
         <input type="number" onChange={(event) => setAmount(event.target.value)} />
         <label>Paid:</label>
         <input type="text" onChange={(event) => setPaid(event.target.value)} />
-        <button onClick={addAmbassador}>
-          Add Earnings
-        </button>
+        <button onClick={addAmbassador}>Add Earnings</button>
       </div>
     </div>
   );
 }
 
-export default App;
+export default AddAmbassador;
