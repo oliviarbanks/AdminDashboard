@@ -1,66 +1,72 @@
 import React from "react";
 import "./Table.scss";
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import TableContainer from '@mui/material/TableContainer';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import TableBody from '@mui/material/TableBody';
+import Paper from '@mui/material/Paper';
 
-const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  {
-    field: 'datePaid',
-    headerName: 'Date Paid',
-    type: 'date',
-    width: 150,
-    valueGetter: (params: GridValueGetterParams) => {
-      // Convert the date string to a Date object
-      return new Date(params.row.datePaid);
-    },
-  },
-  {
-    field: 'isPaid',
-    headerName: 'Ambassador paid?',
-    type: 'text',
-    width: 150,
-    valueGetter: (params: GridValueGetterParams) => (params.row.isPaid ? 'Paid' : 'Not Paid'),
-  },
-  {
-    field: 'amountPaid',
-    headerName: 'Amount Paid',
-    type: 'number',
-    width: 150,
-  },
+interface Row {
+  id: number;
+  user: text;
+  datePaid: Date;
+  amountPaid: number;
+  isPaid: boolean;
+}
+
+function createData(
+    id: number,
+  user: string,
+  datePaid: Date, 
+  amountPaid: number,
+  isPaid: boolean,
+): Row {
+  return { id, user, datePaid, amountPaid, isPaid };
+}
+
+const rows: Row[] = [
+    createData(1, 'John Doe', '2023-09-18', 100, true),
+    createData(2, 'Jane Smith', '2023-09-19', 150, false),
+    createData(3, 'Bob Smith', '2023-09-18', 100, true),
+    createData(4, 'Simba Lion', '2023-09-18', 100, true),
+    createData(5, 'Star Bucks', '2023-09-18', 100, true),
+
 ];
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', datePaid: '2022-10-15', isPaid: true, amountPaid: 500 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', datePaid: '2022-09-28', isPaid: true, amountPaid: 750 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', datePaid: '2022-11-05', isPaid: false, amountPaid: 0 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', datePaid: '2022-12-20', isPaid: true, amountPaid: 250 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', datePaid: '2022-08-10', isPaid: false, amountPaid: 0 },
-  { id: 6, lastName: 'Melisandre', firstName: 'Unknown', datePaid: '2022-07-03', isPaid: true, amountPaid: 1000 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', datePaid: '2022-11-17', isPaid: true, amountPaid: 300 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', datePaid: '2022-10-08', isPaid: false, amountPaid: 0 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', datePaid: '2022-09-02', isPaid: true, amountPaid: 400 },
-];
-
-const Table = () => {
+const CustomTable = () => {
   return (
-    <div className="table">
-      <div style={{ height: 400, width: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-          checkboxSelection
-        />
-      </div>
-    </div>
+    <TableContainer component={Paper} className="table">
+      <Table >
+        <TableHead>
+          <TableRow>
+            <TableCell className="tableCell">Ambassador id</TableCell>
+            <TableCell className="tableCell" >Ambassador Name</TableCell>
+            <TableCell className="tableCell">Date Paid</TableCell>
+            <TableCell className="tableCell">Amount Paid</TableCell>
+            <TableCell className="tableCell">Status</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell >{row.id}</TableCell>
+              <TableCell className="tableCell">{row.user}</TableCell>
+              <TableCell className="tableCell">{row.datePaid}</TableCell>
+              <TableCell className="tableCell">{row.amountPaid}</TableCell>
+              <TableCell className="tableCell">
+                <span className="status" style={{color: row.isPaid ? "green" : "red"}}>
+                  <span className="statusText">{row.isPaid ? "Paid" : "Not Paid"}</span>
+                  </span>
+                
+                </TableCell>            
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
-export default Table;
+export default CustomTable;
