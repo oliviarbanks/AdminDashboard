@@ -1,19 +1,40 @@
-@use '../styles/partials/typography' as *;
 
-.information input{
-    width: 300px;
-    height: 50px;
-    font-size: 20px;
-    padding-left: 10px;
-    margin: 10px;
-}
-
-.information button {
-    width: 320px;
-    height: 50px;
-    margin-top: 20px;
-}
-
-.information button:hover{
+.information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .title{
+    padding-bottom: 20px;
+    font-size: 1.2rem;
+    text-decoration: underline;
+  }
+  
+  label {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  input {
+    padding: 10px;
+    border: 2px solid rgba(174, 0, 255, 0.544); 
+    border-radius: 8px; 
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  
+  button {
+    background-color: rgba(174, 0, 255, 0.544);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-}
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: rgba(174, 0, 255, 0.8); 
+    }
+  }
+  

@@ -5,8 +5,10 @@ import Form from "./components/Form";
 import Home from "./pages/Home/Home";
 import List from "./pages/List/List";
 import Login from "./pages/Login/Login";
-import New from "./pages/New/New";
 import Single from './pages/Single/Single';
+import DataTable from "./components/DataTable/DataTable";
+import Registration from "./pages/Registration/Registration";
+
 
 
 function App() {
@@ -18,28 +20,25 @@ function App() {
       <div className="information">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Registration />}/>
           <Route path="/login" element={<Login />} />
           <Route path="users">
             <Route index element={<List/>}/>
             <Route path=":userId" element={<Single/>}/>
-            <Route path="new" element={<New />} />
           </Route>
           <Route path="date">
             <Route index element={<List/>} />
             <Route path=":dateId" element={<Single/>}/>
-            <Route path="new" element={<New />} />
           </Route>
           <Route path="amount">
             <Route index element={<List/>} />
             <Route path=":amountId" element={<Single/>}/>
-            <Route path="new" element={<New />} />
           </Route>
           <Route path="paid">
             <Route index element={<List/>} />
             <Route path=":paidId" element={<Single/>}/>
-            <Route path="new" element={<New />} />
           </Route>
-          
+          <Route path="datatable" element={<DataTable />} />
           <Route path="/form" element={<Form />} />
         </Routes>
        

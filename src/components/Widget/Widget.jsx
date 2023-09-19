@@ -4,7 +4,6 @@ import DoneAllIcon from '@mui/icons-material/DoneAll';
 import PersonIcon from '@mui/icons-material/Person';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import 'react-calendar/dist/Calendar.css';
-import Calendar from "react-calendar";
 
 const Widget = ({ type }) => {
     let data = {};
@@ -28,12 +27,7 @@ const Widget = ({ type }) => {
                 icon: <PersonIcon className="icon" />,
             };
             break;
-        // case "date":
-        //     data = {
-        //         title: "DATE",
-        //         isMoney: false,
-        //     };
-        //     break;
+       
         case "amount":
             data = {
                 title: "Amount",
@@ -63,11 +57,7 @@ const Widget = ({ type }) => {
                  {type === "user"}
                 </div>
 
-                {/* {type === "date" && ( 
-           <div className="calendar"> 
-            <Calendar value={date} onChange={handleDateChange} className="reactCalendar"/> 
-          </div> 
-         )} */}
+               
                 {type === "amount" && (
                      <span className="counter">{data.link}{data.isMoney && "$"}{amount}</span>
                 )}

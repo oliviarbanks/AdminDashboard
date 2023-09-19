@@ -1,66 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Table.scss";
-import TableContainer from '@mui/material/TableContainer';
-import Table from '@mui/material/Table';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
-import TableBody from '@mui/material/TableBody';
-import Paper from '@mui/material/Paper';
-
-interface Row {
-  id: number;
-  user: text;
-  datePaid: Date;
-  amountPaid: number;
-  isPaid: boolean;
-}
-
-function createData(
-    id: number,
-  user: string,
-  datePaid: Date, 
-  amountPaid: number,
-  isPaid: boolean,
-): Row {
-  return { id, user, datePaid, amountPaid, isPaid };
-}
-
-const rows: Row[] = [
-    createData(1, 'John Doe', '2023-09-18', 100, true),
-    createData(2, 'Jane Smith', '2023-09-19', 150, false),
-    createData(3, 'Bob Smith', '2023-09-18', 100, true),
-    createData(4, 'Simba Lion', '2023-09-18', 100, true),
-    createData(5, 'Star Bucks', '2023-09-18', 100, true),
-
-];
+import TableContainer from "@mui/material/TableContainer";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
+import Paper from "@mui/material/Paper";
+import axios from "axios";
 
 const CustomTable = () => {
+  const [data, setData] = useState([]); // Remove TypeScript-specific syntax
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Fetch data from the server using Axios
+    axios
+      .get("http://localhost:3001/earnings/")
+      .then((response) => {
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <TableContainer component={Paper} className="table">
-      <Table >
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">Ambassador id</TableCell>
-            <TableCell className="tableCell" >Ambassador Name</TableCell>
+            <TableCell className="tableCell">Ambassador Name</TableCell>
             <TableCell className="tableCell">Date Paid</TableCell>
             <TableCell className="tableCell">Amount Paid</TableCell>
             <TableCell className="tableCell">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row) => (
             <TableRow key={row.id}>
-              <TableCell >{row.id}</TableCell>
-              <TableCell className="tableCell">{row.user}</TableCell>
-              <TableCell className="tableCell">{row.datePaid}</TableCell>
-              <TableCell className="tableCell">{row.amountPaid}</TableCell>
+              <TableCell>{row.id}</TableCell>
+              <TableCell className="tableCell">{row.name}</TableCell>
               <TableCell className="tableCell">
-                <span className="status" style={{color: row.isPaid ? "green" : "red"}}>
-                  <span className="statusText">{row.isPaid ? "Paid" : "Not Paid"}</span>
+                {row.date ? new Date(row.date).toLocaleDateString('en-US') : ''}
+                </TableCell>
+              <TableCell className="tableCell">{row.amount}</TableCell>
+              <TableCell className="tableCell">
+                <span className="status" style={{ color: row.isPaid ? "green" : "red" }}>
+                  <span className="statusText">{row.isPaid ? "Yes" : "No"}</span>
                   </span>
-                
-                </TableCell>            
+                  </TableCell>
             </TableRow>
           ))}
         </TableBody>
