@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.scss"
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
-import Charts from "../../components/Charts/Charts";
+import Charts from "../../components/Charts/PieChart";
 import Ambassadors from "../../components/Ambassadors/Ambassadors";
 import Table from "../../components/Table/Table";
 
@@ -18,12 +18,8 @@ const Home = () => {
            
             <div className="charts">
                 <Ambassadors />
-                <Charts />
             </div>
-            <div className="listContainer">
-                <div className="listTitle">Latest Transactions</div>
-                <Table/>
-            </div>
+            
             </div>
         </div>
     )

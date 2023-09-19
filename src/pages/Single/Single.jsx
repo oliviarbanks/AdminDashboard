@@ -2,7 +2,6 @@ import React from "react";
 import "./Single.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
-import Chart from "../../components/Charts/Charts"; // Import the Chart component
 import List from "../List/List"; // Import the List component
 
 const Single = () => {
@@ -45,7 +44,6 @@ const Single = () => {
             </div>
           </div>
           <div className="right">
-            <Chart aspect={3 / 1} title="User Spending (Last 6 Months)" />
           </div>
         </div>
         <div className="bottom">
