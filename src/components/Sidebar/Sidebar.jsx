@@ -38,7 +38,7 @@ const Sidebar = () => {
           <li>
             <Link to="/form">
               <CreateIcon className="icon" />
-              <span>Upload Mannually</span>
+              <span>Upload Manually</span>
             </Link>
           </li>
           <li>

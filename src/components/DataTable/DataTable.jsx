@@ -4,6 +4,10 @@ import "./DataTable.scss";
 import format from 'date-fns/format';
 import { DataGrid } from '@mui/x-data-grid';
 import Papa from 'papaparse';
+import { format as formatDate, parse } from 'date-fns';
+
+
+
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 150 },
@@ -11,11 +15,15 @@ const columns = [
   {
     field: 'date',
     headerName: 'Date',
-    type: 'Date',
+    type: 'date', // Use 'date' type
     width: 150,
     valueFormatter: (params) => {
       const parsedDate = new Date(params.value);
-      return format(parsedDate, 'MM-dd-yyyy');
+      if (!isNaN(parsedDate.getTime())) { // Check if the date is valid
+        return format(parsedDate, 'MM-dd-yyyy');
+      } else {
+        return '';
+      }
     },
   },
   {
@@ -113,7 +121,17 @@ const DataTable = () => {
         complete: (results) => {
           console.log('CSV data converted to JSON:', results.data);
 
-          const jsonData = results.data;
+          // const jsonData = results.data;
+          const jsonData = results.data.map((row) => ({
+            ...row,
+            // Parse the date in 'YYYY-MM-DD' format
+            // const parsedDate = new Date (params.value);
+            // console.log('Parsed date:', parsedDate);
+
+            date: format(parse(row.date, 'yyyy-MM-dd', new Date()), 'MM-dd-yyyy'),
+            // Assuming 'Paid' values are either 'Yes' or 'No'
+            paid: row.paid.toLowerCase() === 'yes' ? 1 : 0,
+          }));
 
           axios
             .post('http://localhost:3001/upload/csv', { jsonData }) 
