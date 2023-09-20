@@ -1,26 +1,31 @@
 import React from "react";
 import "./Home.scss"
-import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
-import Charts from "../../components/Charts/PieChart";
-import Ambassadors from "../../components/Ambassadors/Ambassadors";
-import Table from "../../components/Table/Table";
+import { Link } from "react-router-dom";
+
+
 
 
 
 const Home = () => {
     return (
         <div className="home">
-            <Sidebar />
             <div className="homeContainer">
-            <Navbar/>
-            <h2 className="title">Dashboard</h2>
-           
-            <div className="charts">
-                <Ambassadors />
+            <Navbar/>            
+            </div>
+            <div className="buttons">
+                <div className="homeButton">
+                <Link to="/register">
+                    <button>Register</button>
+                </Link>
+                </div>
+                <div className="homeButton">
+                <Link to="/login">
+                    <button>Login</button>
+                </Link>
+                </div>
             </div>
             
-            </div>
         </div>
     )
 

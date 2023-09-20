@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Registration.scss';
+import { Link } from 'react-router-dom';
 
 function Registration() {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
     email: '',
+    password: '',
     company: '',
   });
 
@@ -18,9 +18,8 @@ function Registration() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/register', formData); // Updated endpoint
+      const response = await axios.post('http://localhost:3001/auth/signup', formData);
       console.log('Registration successful:', response.data);
-      // Redirect to login or handle as needed
     } catch (error) {
       console.error('Registration failed:', error);
     }
@@ -30,12 +29,12 @@ function Registration() {
     <div className="registration-container">
       <h2>Registration</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+      <div className="form-group">
           <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
             onChange={handleChange}
           />
         </div>
@@ -50,15 +49,6 @@ function Registration() {
         </div>
         <div className="form-group">
           <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <input
             type="company"
             name="company"
             placeholder="Company"
@@ -67,7 +57,9 @@ function Registration() {
           />
         </div>
         <div className="form-group">
+          <Link to="/login">
           <button type="submit">Register</button>
+          </Link>
         </div>
       </form>
     </div>

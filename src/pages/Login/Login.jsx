@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.scss';
+import { Link } from 'react-router-dom';
+
+
 
 function Login() {
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -16,7 +19,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', formData);
+      const response = await axios.post('http://localhost:3001/auth/login', formData);
       console.log('Login successful:', response.data);
       // Store the JWT token in local storage or a cookie
       // Redirect to the protected dashboard or handle as needed
@@ -32,9 +35,9 @@ function Login() {
         <div className="form-group">
           <input
             type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
+            name="email"
+            placeholder="Email"
+            value={formData.email}
             onChange={handleChange}
           />
         </div>
@@ -48,7 +51,9 @@ function Login() {
           />
         </div>
         <div className="form-group">
+          <Link to="/dashboard">
           <button type="submit">Login</button>
+          </Link>
         </div>
       </form>
     </div>

@@ -30,7 +30,7 @@ const AddAmbassador = () => {
       })
       .then(() => {
         console.log('success');
-        history('/'); 
+        history('/dashboard'); 
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -40,25 +40,34 @@ const AddAmbassador = () => {
 
   return (
     <div>
-      <div className="list">
+      <div className="form">
             <Sidebar/>
-            <div className="listContainer">
+            <div className="formContainer">
                 <Navbar/>
-            
-       
-      <div className="information">
       <div className="title">Manually upload information here</div>
+        <div className="inputContainer">
         <label>Name:</label>
         <input type="text" onChange={(event) => setName(event.target.value)} />
+        </div>
+        <div className="inputContainer">
+
         <label>Date:</label>
         <input type="date" onChange={(event) => setDate(event.target.value)} />
+        </div>
+        <div className="inputContainer">
+
         <label>Amount:</label>
         <input type="number" onChange={(event) => setAmount(event.target.value)} />
+        </div>
+        
+        <div className="inputContainer">
+
         <label>Paid:</label>
         <input type="text" onChange={(event) => setPaid(event.target.value)} />
+        </div>
         <button onClick={addAmbassador}>Add Earnings</button>
       </div>
-      </div>
+      
        </div>
     </div>
   );

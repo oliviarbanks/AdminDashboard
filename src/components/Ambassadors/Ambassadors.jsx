@@ -1,6 +1,5 @@
 import React from "react";
 import "./Ambassadors.scss";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import 'react-circular-progressbar/dist/styles.css';
 import BarChart from "../Charts/BarChart";
 import PieChart from "../Charts/PieChart";
@@ -18,7 +17,7 @@ const Ambassadors = () => {
             <PieChart/>
             <LineChartComponent/>
           </div>
-        </div>
+        </div>r
       </div>
     </div>
   );

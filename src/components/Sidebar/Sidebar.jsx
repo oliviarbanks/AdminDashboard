@@ -2,8 +2,6 @@ import React from "react";
 import "./Sidebar.scss";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import PriceCheck from "@mui/icons-material/PriceCheck";
 import LogoutIcon from '@mui/icons-material/Logout';
 import CreateIcon from '@mui/icons-material/Create';
 import { Link } from "react-router-dom";
@@ -20,15 +18,15 @@ const Sidebar = () => {
           <p className="title">Main</p>
 
           <li>
-            <Link to="/">
+            <Link to="/dashboard">
               <DashboardIcon className="icon" />
               <span>Dashboard</span>
             </Link>
           </li>
           <li>
-            <Link to="/users">
+            <Link to="/list">
               <PersonOutlineIcon className="icon" />
-              <span>Ambassadors</span>
+              <span>Data</span>
             </Link>
           </li>
           <li>
@@ -38,7 +36,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/logout">
+            <Link to="/">
               <LogoutIcon className="icon" />
               <span>Log Out</span>
             </Link>

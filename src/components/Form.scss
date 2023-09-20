@@ -1,14 +1,24 @@
-
-.information {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.form{
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  .formContainer{
+      flex:6;
   }
+}
+.inputContainer{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
   .title{
     padding-bottom: 20px;
     font-size: 1.2rem;
     text-decoration: underline;
+    padding-left: 20px;
+    padding-top: 20px;
+  
   }
   
   label {
@@ -21,7 +31,7 @@
     border: 2px solid rgba(174, 0, 255, 0.544); 
     border-radius: 8px; 
     margin-bottom: 16px;
-    width: 100%;
+    width: 50%;
   }
   
   button {
@@ -30,6 +40,7 @@
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
+    margin-left: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   
