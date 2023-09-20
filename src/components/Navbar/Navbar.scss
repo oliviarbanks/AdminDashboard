@@ -25,30 +25,13 @@
                 font-size: 0.9rem;
                 position: relative;
 
-                .icon{
-                    font-size: 1.5rem;
-                    color: rgba(174, 0, 255, 0.544);
-                    padding-right: 8px;
-                }
+            
                 .avatar{
                     width: 30px;
                     height: 30px;
                     border-radius: 50%;
                 }
-                .counter{
-                    width: 15px;
-                    height: 15px;
-                    background-color: rgb(235, 57, 134);
-                    border-radius: 50%;
-                    color: white;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 0.5rem;
-                    position: absolute;
-                    top: 0;
-                    left: -1;
-                }
+                
             }
         }
     }

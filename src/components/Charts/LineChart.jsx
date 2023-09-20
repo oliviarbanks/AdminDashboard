@@ -2,11 +2,9 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const data = [
-  // Replace with your actual data
   { name: 'Jan', Ambassador1: 1000, Ambassador2: 1500, Ambassador3: 800, Ambassador4: 1200, Ambassador5: 2000, Ambassador6: 1800 },
   { name: 'Feb', Ambassador1: 1200, Ambassador2: 1600, Ambassador3: 900, Ambassador4: 1300, Ambassador5: 2100, Ambassador6: 1900 },
   { name: 'Mar', Ambassador1: 1100, Ambassador2: 1550, Ambassador3: 820, Ambassador4: 1250, Ambassador5: 2050, Ambassador6: 1850 },
-  // Add more months and data as needed
 ];
 
 const LineChartComponent = () => {

@@ -9,19 +9,18 @@ const AddAmbassador = () => {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState(0);
-  const [isPaid, setPaid] = useState("paid"); // Default to "paid"
+  const [isPaid, setPaid] = useState("paid"); 
 
   const history = useNavigate();
 
   const addAmbassador = () => {
     if (!name || !date || !amount || !isPaid) {
-      // Check if any required field is missing
-      alert("Please fill in all fields."); // Provide user feedback
-      return; // Prevent the request if fields are missing
+      alert("Please fill in all fields."); 
+      return; 
     }
-    console.log(name, date, amount, isPaid); // Add this line to log the data
+    console.log(name, date, amount, isPaid); 
     const parsedAmount = parseFloat(amount);
-    const paidValue = isPaid === "paid" ? 1 : 0; // Convert to 1 (paid) or 0 (not paid)
+    const paidValue = isPaid === "paid" ? 1 : 0; 
 
     axios
       .post("http://localhost:3001/earnings", {

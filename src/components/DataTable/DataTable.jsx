@@ -22,7 +22,7 @@ const columns = [
     field: 'amount',
     headerName: 'Amount',
     type: 'number',
-    width: 120, // Adjust the width as needed
+    width: 120, 
     valueFormatter: (params) => {
       const formattedAmount = `$${params.value.toFixed(2)}`;
       return formattedAmount;
@@ -92,11 +92,10 @@ const DataTable = () => {
           console.log('Upload response:', uploadData);
           alert(uploadData.message);
 
-          // Fetch and update the data without page reload
           axios
             .get('http://localhost:3001/earnings/')
             .then((response) => {
-              setData(response.data); // Update the state with the latest data
+              setData(response.data); 
             })
             .catch((error) => {
               console.error('Error fetching data:', error);
@@ -107,27 +106,22 @@ const DataTable = () => {
           alert('Error uploading CSV file: ' + error.message);
         });
 
-      // Parse CSV and convert to JSON using papaparse
       Papa.parse(file, {
         header: true,
-        delimiter: '\t', // Use tab as the delimiter
+        delimiter: '\t', 
         dynamicTyping: true,
         complete: (results) => {
           console.log('CSV data converted to JSON:', results.data);
 
-          // Assuming your JSON data structure has fields 'name', 'date', 'amount', and 'paid'
           const jsonData = results.data;
 
-          // Insert JSON data into the database using Axios
           axios
-            .post('http://localhost:3001/upload/csv', { jsonData }) // Adjust the endpoint URL
+            .post('http://localhost:3001/upload/csv', { jsonData }) 
             .then((response) => {
               console.log('Data inserted into the database:', response.data);
 
-              // Update the state with the new data to display it in the UI
-              setData([...data, ...jsonData]); // Append the new data to the existing data
+              setData([...data, ...jsonData]); 
 
-              // You can update the UI or perform other actions here if needed
             })
             .catch((error) => {
               console.error('Error inserting data into the database:', error);

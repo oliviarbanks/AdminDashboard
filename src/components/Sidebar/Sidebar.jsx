@@ -5,7 +5,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CreateIcon from '@mui/icons-material/Create';
 import { Link, useNavigate } from "react-router-dom";
-import logoImage from "../../assets/images/logo.png"; // Import the image
+import logoImage from "../../assets/images/logo.png"; 
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <img className="logo" src={logoImage} alt="Logo" /> {/* Use the imported image */}
+        <img className="logo" src={logoImage} alt="Logo" /> 
       </div>
       <hr />
       <div className="center">

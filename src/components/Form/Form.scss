@@ -3,11 +3,10 @@
   width: 100%;
   .formContainer {
     flex: 6;
-    color: white; /* Set text color to white */
+    color: white; 
   }
 }
 
-/* Update your Form.scss file with this SCSS */
 .inputContainer {
   display: flex;
   flex-direction: column;
@@ -20,21 +19,20 @@
     color: black;
   }
 
-  /* Use flexbox to align radio buttons and labels horizontally */
   .radio-group {
     display: flex;
-    align-items: center; /* Vertically center the radio buttons and labels */
+    align-items: center; 
     margin: 0 auto;
     padding: 0 300px;
   }
 
   input[type="radio"] {
-    margin-right: 5px; /* Add spacing between the radio button and label text */
+    margin-right: 5px; 
   }
 
   input {
     padding: 10px;
-    border: 2px solid #007bff; /* Use blue border color */
+    border: 2px solid #007bff; 
     border-radius: 8px;
     margin-bottom: 16px;
     width: 100%;
@@ -63,7 +61,7 @@
 }
 
 button {
-  background-color: #007bff; /* Use blue background color */
+  background-color: #007bff; 
   color: white;
   padding: 10px 20px;
   border: none;
@@ -72,6 +70,6 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
   }
 }
