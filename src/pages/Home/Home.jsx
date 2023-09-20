@@ -1,17 +1,13 @@
 import React from "react";
 import "./Home.scss"
-import Navbar from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
-
-
-
-
 
 const Home = () => {
     return (
         <div className="home">
             <div className="homeContainer">
-            <Navbar/>            
+            <h1>Welcome to the Ambassador Management System</h1>
+            <p>Please select one of the following options</p>
             </div>
             <div className="buttons">
                 <div className="homeButton">

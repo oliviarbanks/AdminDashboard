@@ -12,12 +12,12 @@ const Ambassadors = () => {
     <div className="ambassadors">
       <div className="bottom">
         <div className="ambassadorsChart">
-          <div>
+          
             <BarChart />
             <PieChart/>
             <LineChartComponent/>
-          </div>
-        </div>r
+          
+        </div>
       </div>
     </div>
   );

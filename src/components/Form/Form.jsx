@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 import "./Form.scss";
-import Navbar from "../components/Navbar/Navbar";
-import Sidebar from "../components/Sidebar/Sidebar";
-import Datatable from "../components/DataTable/DataTable";
+import Navbar from "../Navbar/Navbar";
+import Sidebar from "../Sidebar/Sidebar";
 
 
 
@@ -30,7 +29,7 @@ const AddAmbassador = () => {
       })
       .then(() => {
         console.log('success');
-        history('/dashboard'); 
+        history('/list'); 
       })
       .catch((error) => {
         console.error('Error:', error);

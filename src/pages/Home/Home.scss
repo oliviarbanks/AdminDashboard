@@ -1,15 +1,41 @@
-.home{
+.home {
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
 }
-    .buttons{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 100px;
-    }
-    .homeButton{
-      padding-bottom: 20px;
-    }
-  
+
+.homeContainer {
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.homeButton button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.homeButton button:hover {
+  background-color: #0056b3;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

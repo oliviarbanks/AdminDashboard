@@ -1,12 +1,5 @@
 import React from "react";
 import "./Navbar.scss"
-import SearchIcon from '@mui/icons-material/Search';
-import LanguageIcon from '@mui/icons-material/Language';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-
-
 
 const Navbar = () => {
     return (

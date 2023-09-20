@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Registration.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; 
 
 function Registration() {
   const [formData, setFormData] = useState({
@@ -9,6 +9,8 @@ function Registration() {
     password: '',
     company: '',
   });
+
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +22,7 @@ function Registration() {
     try {
       const response = await axios.post('http://localhost:3001/auth/signup', formData);
       console.log('Registration successful:', response.data);
+      navigate('/login');
     } catch (error) {
       console.error('Registration failed:', error);
     }
@@ -28,8 +31,8 @@ function Registration() {
   return (
     <div className="registration-container">
       <h2>Registration</h2>
-      <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <form onSubmit={handleSubmit} className='center-form'>
+        <div className="form-group">
           <input
             type="email"
             name="email"
@@ -57,11 +60,12 @@ function Registration() {
           />
         </div>
         <div className="form-group">
-          <Link to="/login">
           <button type="submit">Register</button>
-          </Link>
         </div>
       </form>
+      <div className="login-link">
+        <Link to="/login">Already have an account? Login here</Link>
+      </div>
     </div>
   );
 }

@@ -4,9 +4,16 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CreateIcon from '@mui/icons-material/Create';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+
+  const navigate = useNavigate(); 
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    navigate('/');
+  };
   return (
     <div className="sidebar">
       <div className="top">
@@ -36,7 +43,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/" onClick={handleLogout}>
               <LogoutIcon className="icon" />
               <span>Log Out</span>
             </Link>
