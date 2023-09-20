@@ -7,16 +7,31 @@
   }
 }
 
+/* Update your Form.scss file with this SCSS */
 .inputContainer {
   display: flex;
   flex-direction: column;
   padding-left: 20px;
   width: 75%;
+
   label {
     margin-bottom: 8px;
     font-weight: bold;
     color: black;
   }
+
+  /* Use flexbox to align radio buttons and labels horizontally */
+  .radio-group {
+    display: flex;
+    align-items: center; /* Vertically center the radio buttons and labels */
+    margin: 0 auto;
+    padding: 0 300px;
+  }
+
+  input[type="radio"] {
+    margin-right: 5px; /* Add spacing between the radio button and label text */
+  }
+
   input {
     padding: 10px;
     border: 2px solid #007bff; /* Use blue border color */
@@ -24,7 +39,20 @@
     margin-bottom: 16px;
     width: 100%;
   }
+
+  #paid {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  #notPaid {
+    margin-left: 200px;
+  }
+
 }
+
+
+
 
 .title {
   padding-bottom: 20px;
