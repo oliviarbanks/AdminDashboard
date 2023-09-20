@@ -1,77 +1,56 @@
-# Ambassador Management System
+# Ambassador Management Dashboard
 
-The Ambassador Management System is built using Create React App, Node.js, Knex, Express, MySQL, Material UI, Recharts, and styled with Sass to visualize ambassador earnings over time.
+![Dashboard Screenshot](dashboard-screenshot.png)
 
-## Installation
+## Overview
 
-In the project directory, you can run:
+The Ambassador Management Dashboard is a web application that provides insights and visualizations of earnings data for ambassadors. It includes various data visualizations such as bar charts, pie charts, and line graphs to help users analyze earnings trends and distributions.
 
-To run the Ambassador Management System locally, you'll need to install the following dependencies using npm:
+## Features
 
-npm install create-react-app @mui/icons-material @mui/material @mui/x-data-grid axios csv-parser datagrid date-fns papaparse react-dropzone-uploader xlsx sass recharts. 
+- **Login Page**: Users can log in with their credentials to access the dashboard.
 
+- **Bar Chart**: Displays earnings data for different ambassadors, aggregating their earnings and showing them as bars on the chart.
 
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Pie Chart**: Visualizes the distribution of earnings, showing the sum of earnings paid and unpaid to ambassadors.
 
-The page will reload when you make changes.
-You may also see any lint errors in the console.
+- **Line Graph**: Presents a line graph tracking total earnings over time for different months, helping users monitor earnings trends.
 
-## Usage
+## Getting Started
 
+To run this project locally, follow these steps:
 
-### `npm test`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/oliviarbanks/AdminDashboard.git
+   cd AdminDashboard
 
-Launches the test runner in the interactive watch mode.\
+## Install dependencies
 
+npm install create-react-app @mui/icons-material @mui/material @mui/x-data-grid axios csv-parser datagrid date-fns papaparse react-dropzone-uploader xlsx sass recharts 
 
-### `npm run build`
+## Start server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Log in with your credentials to access the dashboard.
 
-### `npm run eject`
+Explore different data visualizations to gain insights into ambassador earnings.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technologies Used
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Front-End: React.js, Recharts, Axios, React Router
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Back-End: Node.js, Express.js, MySQL, Knex.js
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Acknowledgments
 
-## Learn More
+Thanks to the open-source community for providing the tools and libraries used in this project.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Special thanks to HealthBird for contributions and testing.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# AdminDashboard
+For any questions or feedback, please contact Olivia Banks at [oliviarbanks@gmail.com].
