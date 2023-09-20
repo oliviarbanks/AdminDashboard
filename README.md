@@ -1,23 +1,29 @@
-# Getting Started with Create React App
+# Ambassador Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Ambassador Management System is built using Create React App, Node.js, Knex, Express, MySQL, Material UI, Recharts, and styled with Sass to visualize ambassador earnings over time.
 
-## Available Scripts
+## Installation
 
 In the project directory, you can run:
 
-### `npm start`
+To run the Ambassador Management System locally, you'll need to install the following dependencies using npm:
 
-Runs the app in the development mode.\
+npm install create-react-app @mui/icons-material @mui/material @mui/x-data-grid axios csv-parser datagrid date-fns papaparse react-dropzone-uploader xlsx sass recharts. 
+
+
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
+The page will reload when you make changes.
 You may also see any lint errors in the console.
+
+## Usage
+
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
 
 ### `npm run build`
 

@@ -1,25 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'recharts';
 import "./BarChart.scss";
-
-const data = [
-  { name: 'Category 1', value: 25 },
-  { name: 'Category 2', value: 50 },
-  { name: 'Category 3', value: 75 },
-  { name: 'Category 4', value: 100 },
-];
+import axios from 'axios';
 
 const BarChartComponent = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/earnings') 
+      .then((response) => {
+        const fetchedData = response.data;
+        const aggregatedData = aggregateEarnings(fetchedData);
+        setData(aggregatedData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const aggregateEarnings = (data) => {
+    const aggregatedData = {};
+    data.forEach((entry) => {
+      const { name, amount } = entry;
+      if (aggregatedData[name]) {
+        aggregatedData[name] += amount;
+      } else {
+        aggregatedData[name] = amount;
+      }
+    });
+
+    return Object.keys(aggregatedData).map((name) => ({
+      name,
+      amount: aggregatedData[name],
+    }));
+  };
+
   return (
     <div>
-      <h2>Simple Bar Chart</h2>
-      <BarChart width={300} height={200} data={data}>
+      <h2>Ambassadors Earnings</h2>
+      <BarChart width={500} height={400} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="name" label={{ value: 'Ambassadors', position: 'insideBottom', offset: 0 }} />
+        <YAxis dataKey="amount" label={{ value: 'Earnings', angle: -90, position: 'insideLeft' }} />
         <Tooltip />
         <Legend />
-        <Bar dataKey="value" fill="#8884d8" />
+        <Bar dataKey="amount" fill="#8884d8" />
       </BarChart>
     </div>
   );
