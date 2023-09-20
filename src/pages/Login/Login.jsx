@@ -1,55 +1,54 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.scss';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
-
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("")
-	const [password, setPassword] = useState("")
-	const [stateToken, setToken] = useState("")
-	const [formSumbission, setFormSubmission] = useState(false);
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [stateToken, setToken] = useState('');
+  const [formSumbission, setFormSubmission] = useState(false);
+  const [loginError, setLoginError] = useState(false); 
 
   const handleEmail = (e) => {
-		setEmail(e.target.value);
-	};
+    setEmail(e.target.value);
+  };
 
-	const handlePassword = (e) => {
-		setPassword(e.target.value);
-	};
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userData = {
-			email: email,
-			password: password,
-
-		};
-    if (email && password){
-      axios.post (`http://localhost:3001/auth/login`, userData)
-        .then((response) => {
-          console.log(response.status, response.data)
-          sessionStorage.token = response.data.token
-          setToken(response.data.token)
-          navigate(`/dashboard`)
-        })
-        .catch(error => {
-          console.error(error);
-        });
-      }
-        else {
-          setFormSubmission(true);
-          alert('Please fill in both fields.');
-        }
-  
+      email: email,
+      password: password,
     };
+    if (email && password) {
+      axios
+        .post(`http://localhost:3001/auth/login`, userData)
+        .then((response) => {
+          console.log(response.status, response.data);
+          sessionStorage.token = response.data.token;
+          setToken(response.data.token);
+          navigate(`/dashboard`);
+        })
+        .catch((error) => {
+          console.error(error);
+          setLoginError(true); 
+        });
+    } else {
+      setFormSubmission(true);
+      alert('Please fill in both fields.');
+    }
+  };
 
   return (
     <div className="login-container">
       <h2>Login</h2>
+      {loginError && <div className="error-message">Invalid email or password</div>}
       <form onSubmit={handleSubmit} className="center-form">
         <div className="form-group">
           <input

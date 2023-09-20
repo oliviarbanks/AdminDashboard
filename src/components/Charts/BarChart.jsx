@@ -20,6 +20,7 @@ const BarChartComponent = () => {
 
   const aggregateEarnings = (data) => {
     const aggregatedData = {};
+
     data.forEach((entry) => {
       const { name, amount } = entry;
       if (aggregatedData[name]) {
@@ -29,10 +30,14 @@ const BarChartComponent = () => {
       }
     });
 
-    return Object.keys(aggregatedData).map((name) => ({
+    const uniqueNames = Object.keys(aggregatedData);
+
+    const result = uniqueNames.map((name) => ({
       name,
       amount: aggregatedData[name],
     }));
+
+    return result;
   };
 
   return (
