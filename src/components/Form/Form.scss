@@ -1,51 +1,49 @@
-.form{
+.form {
   display: flex;
   width: 100%;
-  height: 100vh;
-  .formContainer{
-      flex:6;
+  .formContainer {
+    flex: 6;
+    color: white; /* Set text color to white */
   }
 }
-.inputContainer{
+
+.inputContainer {
   display: flex;
   flex-direction: column;
   padding-left: 20px;
-}
-
-  .title{
-    padding-bottom: 20px;
-    font-size: 1.2rem;
-    text-decoration: underline;
-    padding-left: 20px;
-    padding-top: 20px;
-  
-  }
-  
+  width: 75%;
   label {
     margin-bottom: 8px;
     font-weight: bold;
+    color: black;
   }
-  
   input {
     padding: 10px;
-    border: 2px solid rgba(174, 0, 255, 0.544); 
-    border-radius: 8px; 
-    margin-bottom: 16px;
-    width: 50%;
-  }
-  
-  button {
-    background-color: rgba(174, 0, 255, 0.544);
-    color: white;
-    padding: 10px 20px;
-    border: none;
+    border: 2px solid #007bff; /* Use blue border color */
     border-radius: 8px;
-    margin-left: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: rgba(174, 0, 255, 0.8); 
-    }
+    margin-bottom: 16px;
+    width: 100%;
   }
-  
+}
+
+.title {
+  padding-bottom: 20px;
+  font-size: 1.2rem;
+  text-decoration: underline;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+button {
+  background-color: #007bff; /* Use blue background color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+}

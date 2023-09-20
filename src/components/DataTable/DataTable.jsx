@@ -5,13 +5,13 @@ import format from 'date-fns/format';
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 130 },
-  { field: 'name', headerName: 'Name', width: 130 },
+  { field: 'id', headerName: 'ID', width: 150 },
+  { field: 'name', headerName: 'Name', width: 150 },
   {
     field: 'date',
     headerName: 'Date',
     type: 'Date',
-    width: 120,
+    width: 150,
     valueFormatter: (params) => {
       const parsedDate = new Date(params.value);
       return format(parsedDate, 'MM-dd-yyyy');
@@ -21,12 +21,12 @@ const columns = [
     field: 'amount',
     headerName: 'Amount',
     type: 'number',
-    width: 160,
+    width: 90,
   },
   {
     field: 'paid', 
     headerName: 'Status',
-    width: 160,
+    width: 90,
     renderCell: (params) => (
       <span>{params.value}</span>
     )
@@ -66,7 +66,7 @@ const DataTable = () => {
     {
       field: 'delete',
       headerName: 'Delete',
-      width: 100,
+      width: 180,
       renderCell: (params) => (
         <button onClick={() => handleDelete(params.row.id)}>Delete</button>
       ),
@@ -107,16 +107,13 @@ const DataTable = () => {
 
   return (
     <div className="datatable">
-      <div className="home">
-        <div className="homeContainer">
-          <h2 className="title">Dashboard</h2>
           <div>
             <input
               type="file"
               accept=".csv"
               onChange={(e) => setFileInput(e.target.files[0])}
             />
-            <button onClick={() => handleFileUpload(fileInput)}>Upload CSV</button>
+            <button className="csvbutton" onClick={() => handleFileUpload(fileInput)}>Upload CSV</button>
             <DataGrid
             rows={data}
             columns={columnsWithDelete}
@@ -126,8 +123,6 @@ const DataTable = () => {
 
           </div>
         </div>
-      </div>
-    </div> 
   );
 };
 
