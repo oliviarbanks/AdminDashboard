@@ -41,7 +41,7 @@ const PieChartComponent = () => {
   return (
     <div>
       <h2>Total Paid vs Not Paid</h2>
-      <PieChart width={300} height={300}>
+      <PieChart width={300} height={400}>
         <Pie
           dataKey="value"
           isAnimationActive={false}

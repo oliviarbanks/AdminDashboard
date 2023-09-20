@@ -49,7 +49,7 @@ const LineChartComponent = () => {
   return (
     <div>
       <h2>Total Daily Earnings</h2>
-      <LineChart width={600} height={400} data={data}>
+      <LineChart width={430} height={400} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />

@@ -43,7 +43,7 @@ const BarChartComponent = () => {
   return (
     <div>
       <h2>Ambassadors Earnings</h2>
-      <BarChart width={500} height={400} data={data}>
+      <BarChart width={450} height={400} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" label={{ value: 'Ambassadors', position: 'insideBottom', offset: 0 }} />
         <YAxis dataKey="amount" label={{ value: 'Earnings', angle: -90, position: 'insideLeft' }} />
