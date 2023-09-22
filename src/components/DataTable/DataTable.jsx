@@ -4,9 +4,18 @@ import "./DataTable.scss";
 import format from 'date-fns/format';
 import { DataGrid } from '@mui/x-data-grid';
 import Papa from 'papaparse';
-import { format as formatDate, parse } from 'date-fns';
+import { format as formatDate, parse, isValid } from 'date-fns';
 
 
+ // Helper function to parse a date with a given format
+ function parseDate(dateString, formatStr) {
+  try {
+    const parsedDate = parse(dateString, formatStr, new Date());
+    return parsedDate;
+  } catch (error) {
+    return null; // Return null if parsing fails
+  }
+}
 
 
 const columns = [
@@ -15,22 +24,26 @@ const columns = [
   {
     field: 'date',
     headerName: 'Date',
-    type: 'date', // Use 'date' type
+    type: 'date',
     width: 150,
     valueFormatter: (params) => {
-      const parsedDate = new Date(params.value);
-      if (!isNaN(parsedDate.getTime())) { // Check if the date is valid
-        return format(parsedDate, 'MM-dd-yyyy');
-      } else {
-        return '';
+      const dateFormats = ['M/dd/yyyy', 'MM/dd/yyyy', 'yyyy-MM-dd', 'dd/MM/yyyy', 'dd-MM-yyyy', 'M/d/yyyy', 'MM/d/yyyy', 'yyyy/MM/dd'];
+      for (const formatStr of dateFormats) {
+        const parsedDate = parseDate(params.value, formatStr);
+        console.log('Parsed date:', parsedDate);
+        if (isValid(parsedDate)) {
+          return format(parsedDate, 'MM-dd-yyyy');
+        }
       }
+
+      return ''; // Return an empty string if none of the formats match
     },
   },
   {
     field: 'amount',
     headerName: 'Amount',
     type: 'number',
-    width: 120, 
+    width: 120,
     valueFormatter: (params) => {
       const formattedAmount = `$${params.value.toFixed(2)}`;
       return formattedAmount;
@@ -45,7 +58,6 @@ const columns = [
     ),
   },
 ];
-
 
 const DataTable = () => {
   const [data, setData] = useState([]);
@@ -116,22 +128,26 @@ const DataTable = () => {
 
       Papa.parse(file, {
         header: true,
-        delimiter: '\t', 
+        delimiter: ',',
         dynamicTyping: true,
         complete: (results) => {
           console.log('CSV data converted to JSON:', results.data);
 
-          // const jsonData = results.data;
-          const jsonData = results.data.map((row) => ({
-            ...row,
-            // Parse the date in 'YYYY-MM-DD' format
-            // const parsedDate = new Date (params.value);
-            // console.log('Parsed date:', parsedDate);
-
-            date: format(parse(row.date, 'yyyy-MM-dd', new Date()), 'MM-dd-yyyy'),
-            // Assuming 'Paid' values are either 'Yes' or 'No'
-            paid: row.paid.toLowerCase() === 'yes' ? 1 : 0,
-          }));
+          const jsonData = results.data.map((row) => {
+            // Attempt to parse the date value
+            const parsedDate = parseDate(row.date, 'yyyy-MM-dd');
+      
+            if (!isValid(parsedDate)) {
+              console.error('Invalid date value:', row.date);
+              // Handle the invalid date here, you can return a default value or handle it as needed
+            }
+      
+            return {
+              ...row,
+              date: isValid(parsedDate) ? format(parsedDate, 'MM-dd-yyyy') : '', // Format the date if it's valid, otherwise return an empty string
+              paid: row.paid.toLowerCase() === 'yes' ? 1 : 0,
+            };
+          });
 
           axios
             .post('http://localhost:3001/upload/csv', { jsonData }) 
@@ -155,6 +171,8 @@ const DataTable = () => {
       alert('Please select a CSV file to upload.');
     }
   };
+
+
 
   return (
     <div className="datatable">
